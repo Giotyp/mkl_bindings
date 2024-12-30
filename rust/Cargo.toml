@@ -1,0 +1,11 @@
+[package]
+name = "rust"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+num-complex = "0.4.5"
+nalgebra = "0.32.5"
+libc = "0.2.150"
+intel-mkl-src = { version = "0.8.1", features = ["mkl-dynamic-lp64-seq"]}
+rand = "0.8.5"
