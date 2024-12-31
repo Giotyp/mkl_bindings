@@ -1,4 +1,19 @@
 fn main() {
+    // Set up the bindings for the MKL library
+    let bindings = bindgen::Builder::default()
+        .header("/opt/intel/oneapi/mkl/2024.0/include/mkl_dfti.h")
+        .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
+        .raw_line("#![allow(non_upper_case_globals)]")
+        .raw_line("#![allow(non_camel_case_types)]")
+        .generate()
+        .expect("Unable to generate mkl bindings");
+
+    // Write the bindings directly to the src directory
+    let out_path = std::path::PathBuf::from("src");
+    bindings
+        .write_to_file(out_path.join("mkl_bindings.rs"))
+        .expect("Couldn't write mkl bindings!");
+
     // Link against the MKL library
     println!("cargo:rerun-if-env-changed=MKLROOT");
     println!("cargo:rustc-link-search=native=/opt/intel/oneapi/mkl/2024.0/lib/");
