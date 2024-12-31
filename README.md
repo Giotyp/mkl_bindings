@@ -24,7 +24,7 @@ pip install -i https://software.repos.intel.com/
 python/pypi numpy
 ```
 
-However, NumPy operations like FFT, do not support in-place computations, which are supported by MKL.
+However, NumPy operations like FFT, do not support **in-place** computations.
 For large computations, where this feauture is needed, custom bindings need to be created.
-To do this, we load the *mkl_rt* library and implemenet the required structs, as shown in [mkl_bindings](python/mkl_bindings.py).
+To do this, we load the *mkl_rt* library and implement the required structs using *ctypes*, as shown in [mkl_bindings](python/mkl_bindings.py).
 An example use of performing in-place DFT computation is shown in [mkl_class](python/mkl_class.py).
