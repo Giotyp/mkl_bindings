@@ -20,8 +20,7 @@ My importing the generated [mkl_bindings](rust/src/mkl_bindings.rs) we can easil
 The **NumPy** library supports acceleration through Intel's MKL library, by installing the required package:
 
 ```
-pip install -i https://software.repos.intel.com/
-python/pypi numpy
+pip install -i https://software.repos.intel.com/python/pypi numpy
 ```
 
 However, NumPy operations like FFT, do not support **in-place** computations.
